@@ -78,11 +78,12 @@ describe('As part of the sql refresh workshop', () => {
 	it('you should be able to add 2 Male & 3 Female garments', async () => {
 
 		// use db.none - change code below here...
-		const result1 = await db.none('INSERT INTO garment(description, img, season, gender, price) VALUES ("t-shirt", "collared-128x128-455119.png", "Summer", "Male", "79.99")');
-		const result2 = await db.none('INSERT INTO garment(description, img, season, gender, price) VALUES ("Shorts", "womens-128x128-455148.png", "Summer", "Male", "80.00")');
+		const result1 = await db.none("INSERT INTO garment(description, img, season, gender, price) VALUES ('t-shirt', 'collared-128x128-455119.png', 'Summer', 'Male', '79.99')");
+		const result2 = await db.none("INSERT INTO garment(description, img, season, gender, price) VALUES ('Shorts', 'womens-128x128-455148.png', 'Summer', 'Male', '80.00')");
 		const result3 = await db.none("INSERT INTO garment(description, img, season, gender, price) VALUES ('Dress(Long)', 'womans-128x128-455140.png', 'Summer', 'Female', '400.00');")
 		const result4 = await db.none("INSERT INTO garment(description, img, season, gender, price) VALUES ('Dress(Short)', 'womans-128x128-455146.png', 'Summer', 'Female', '600.00');")
 		const result5 = await db.none("INSERT INTO garment(description, img, season, gender, price) VALUES ('Top(Red)', 'womans-128x128-455147.png', 'Summer', 'Female', '200.00')");
+
 
 		// write your code above this line
 
@@ -98,7 +99,7 @@ describe('As part of the sql refresh workshop', () => {
 	it('you should be group garments by gender and count them', async () => {
 
 		// and below this line for this function will
-
+		
 		// write your code above this line
 
 		const expectedResult = [
@@ -121,7 +122,7 @@ describe('As part of the sql refresh workshop', () => {
 	it('you should be able to remove all the Unisex garments', async () => {
 
 		// and below this line for this function will
-
+		const result = await db.none('DELETE FROM garment WHERE gender= $1', ["Unisex"])
 		// write your code above this line
 
 		const gender_count_sql = 'select count(*) from garment where gender = $1'
